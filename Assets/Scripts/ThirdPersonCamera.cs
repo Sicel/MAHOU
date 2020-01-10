@@ -30,19 +30,14 @@ public class ThirdPersonCamera : MonoBehaviour
 
     public void RotateCamera(InputAction.CallbackContext context)
     {
-        Debug.Log(context.action);
         rotateAmount = context.ReadValue<Vector2>().x;
-    }
-
-    private void FixedUpdate()
-    {
-
     }
 
     private void LateUpdate()
     {
         offset = Quaternion.AngleAxis(rotateAmount * sensitivity, Vector3.up) * offset;
-        transform.position = PlayerPos + offset;
         transform.LookAt(PlayerPos + lookOffset);
+        transform.position = PlayerPos + offset;
+
     }
 }
