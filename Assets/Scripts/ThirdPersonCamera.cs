@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class ThirdPersonCamera : MonoBehaviour
 {
     [SerializeField] private GameObject player;
+    [SerializeField] private ObjectStates objectStates;
     [SerializeField] private Vector3 lookOffset;
     [SerializeField] private Vector3 offset;
     [SerializeField] private float sensitivity = 5.0f;
@@ -35,9 +36,15 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        offset = Quaternion.AngleAxis(rotateAmount * sensitivity, Vector3.up) * offset;
-        transform.LookAt(PlayerPos + lookOffset);
+        switch (objectStates.PlayerState)
+        {
+            case PlayerState.Targetting:
+                break;
+            default:
+                offset = Quaternion.AngleAxis(rotateAmount * sensitivity, Vector3.up) * offset;
+                break;
+        }
         transform.position = PlayerPos + offset;
-
+        transform.LookAt(PlayerPos + lookOffset);
     }
 }

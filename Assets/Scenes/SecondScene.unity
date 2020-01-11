@@ -189,8 +189,9 @@ MonoBehaviour:
   currentMana: 100
   currentStamina: 100
   targetable: 1
+  camera: {fileID: 265606017}
   SpellList: {fileID: 11400000, guid: 612d5ebb65ebfcc41afa1ac85f056364, type: 2}
-  selectedSpell: {fileID: 11400000, guid: 79d56c90f0f925645ac1ce6f94d86e0b, type: 2}
+  selectedSpell: {fileID: 11400000, guid: b128e410178e0084da31727a3582020c, type: 2}
   objectStates: {fileID: 11400000, guid: 92a9d07c26a20714ea8ba1c0373bbc77, type: 2}
   targeter: {fileID: 30469626}
 --- !u!54 &7889836
@@ -300,7 +301,18 @@ MonoBehaviour:
     m_ActionId: e43999c8-90c7-49f4-9c34-c1530b401300
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7889835}
+        m_MethodName: NextState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2f2c53a4-3a45-433a-8f68-aef8b0d29777
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -352,7 +364,18 @@ MonoBehaviour:
     m_ActionId: 4196ea78-0114-4836-a1a5-72f0cc697ca2
     m_ActionName: UI/TrackedDeviceSelect
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7889835}
+        m_MethodName: PreviousState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a368350c-90b6-417f-a97e-c6faa1b8af7f
     m_ActionName: Player/Cancel[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
@@ -471,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7889832}
+  objectStates: {fileID: 11400000, guid: 92a9d07c26a20714ea8ba1c0373bbc77, type: 2}
   lookOffset: {x: 0, y: 1.62, z: 0}
   offset: {x: 0, y: 0, z: 0}
   sensitivity: 0.43

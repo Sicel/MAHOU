@@ -3,7 +3,11 @@ guid: 89c40801b4462b04db0ab117107be6c3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - SpellList: {fileID: 11400000, guid: 612d5ebb65ebfcc41afa1ac85f056364, type: 2}
+  - selectedSpell: {fileID: 11400000, guid: b128e410178e0084da31727a3582020c, type: 2}
+  - objectStates: {fileID: 11400000, guid: 92a9d07c26a20714ea8ba1c0373bbc77, type: 2}
+  - targeter: {fileID: 100002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -18,8 +18,8 @@ MonoBehaviour:
   castTime: 0
   spellInfo:
     element: 0
-    target: 0
-    targetType: 0
+    target: 2
+    targetType: 3
     airShape: 0
-    groundShape: 0
-  targetPosition: {x: 0, y: 0, z: 0}
+    groundShape: 2
+  targetPosition: {x: 4.6417794, y: -2.828272e-18, z: 5.094962}

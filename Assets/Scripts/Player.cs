@@ -14,10 +14,12 @@ public class Player : Entity
 {
     [Header("Player")]
 
+    [SerializeField] private Camera camera;
     [SerializeField] private SpellList SpellList;
     [SerializeField] private Spell selectedSpell;
     [SerializeField] private ObjectStates objectStates;
     [SerializeField] private GameObject targeter;
+
 
     public PlayerState CurrentPlayerState 
     { 
@@ -28,30 +30,41 @@ public class Player : Entity
     // Start is called before the first frame update
     void Start()
     {
-        
+        CurrentPlayerState = PlayerState.Moving;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        switch (CurrentPlayerState)
+        {
+            case PlayerState.Targetting:
+                Targeting();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void Targeting()
+    {
+        selectedSpell.OnBeforeTargetting(camera.ScreenPointToRay(Mouse.current.position.ReadValue()));
+
+        if (selectedSpell.TargetPosition != Vector3.zero)
+            targeter.gameObject.transform.position = selectedSpell.TargetPosition + new Vector3(0, 2, 0);
+
+        selectedSpell.OnTargetting();
     }
 
     public void NextState(InputAction.CallbackContext context)
     {
-        int enumLength = System.Enum.GetNames(typeof(PlayerState)).Length;
-        CurrentPlayerState++;
-
-        if ((int)CurrentPlayerState >= enumLength)
-            CurrentPlayerState = (PlayerState)enumLength;
-
+        if (context.performed)
+            CurrentPlayerState = CurrentPlayerState.Next();
     }
 
     public void PreviousState(InputAction.CallbackContext context)
     {
-        CurrentPlayerState--;
-
-        if (CurrentPlayerState < 0)
-            CurrentPlayerState = 0;
+        if (context.performed)
+            CurrentPlayerState = CurrentPlayerState.Prev();
     }
 }

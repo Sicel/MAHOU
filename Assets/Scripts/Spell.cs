@@ -14,20 +14,22 @@ public class Spell : ScriptableObject
 
     public Vector3 TargetPosition { get { return targetPosition; } } 
 
-    private Ray ray;
-
     public void OnBeforeTargetting(Ray ray)
     {
         if (spellInfo.target == Target.None)
         {
+            targetPosition = Vector3.zero;
             return;
         }
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, LayerMask.GetMask("Ground")))
+        // Max distance = distance from camera to player + spell max distance
+
+        if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
         {
             targetPosition = hit.point;
+            Debug.Log(hit.distance);
         }
     }
 
