@@ -20,11 +20,16 @@ public class Player : Entity
     [SerializeField] private ObjectStates objectStates;
     [SerializeField] private GameObject targeter;
 
-
     public PlayerState CurrentPlayerState 
     { 
         get { return objectStates.PlayerState; } 
         set { objectStates.PlayerState = value; }
+    }
+
+    public Vector3 TargetPosition
+    {
+        get { return targeter.transform.position; }
+        set { targeter.transform.position = value; }
     }
 
     // Start is called before the first frame update
